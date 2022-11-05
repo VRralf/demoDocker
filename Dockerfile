@@ -1,4 +1,4 @@
 FROM gradle:7.5.1-jdk11-alpine
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY . .
+RUN gradle build
+ENTRYPOINT ["java","-jar","build/libs/demoDocker-0.0.1-SNAPSHOT.jar"]
